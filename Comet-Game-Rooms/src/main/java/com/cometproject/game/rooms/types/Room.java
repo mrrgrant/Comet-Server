@@ -66,6 +66,11 @@ public class Room implements IRoom {
     }
 
     @Override
+    public IRightsComponent getRights() {
+        return this.rightsComponent;
+    }
+
+    @Override
     public IRoomData getData() {
         return this.roomContext.getRoomData();
     }

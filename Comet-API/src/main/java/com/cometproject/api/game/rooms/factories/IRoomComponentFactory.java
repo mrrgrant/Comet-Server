@@ -17,4 +17,6 @@ public interface IRoomComponentFactory {
 
     IFilterComponent createFilterComponent(RoomContext roomContext);
 
+    IRightsComponent createRightsComponent(RoomContext roomContext);
+
 }

@@ -26,7 +26,8 @@ public class RoomFactory implements IRoomFactory {
                 this.roomComponentFactory.createProcessComponent(roomContext),
                 this.roomComponentFactory.createTileComponent(roomContext),
                 this.roomComponentFactory.createTradeComponent(roomContext),
-                this.roomComponentFactory.createFilterComponent(roomContext), rightsComponent);
+                this.roomComponentFactory.createFilterComponent(roomContext),
+                this.roomComponentFactory.createRightsComponent(roomContext));
 
         roomContext.setRoom(room);
 

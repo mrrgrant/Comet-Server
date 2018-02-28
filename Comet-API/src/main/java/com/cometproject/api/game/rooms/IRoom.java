@@ -17,6 +17,8 @@ public interface IRoom {
 
     IFilterComponent getFilter();
 
+    IRightsComponent getRights();
+
     IRoomData getData();
 
 }
