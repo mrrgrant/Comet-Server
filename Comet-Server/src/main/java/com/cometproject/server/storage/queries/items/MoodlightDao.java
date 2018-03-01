@@ -3,7 +3,7 @@ package com.cometproject.server.storage.queries.items;
 import com.cometproject.api.utilities.JsonUtil;
 import com.cometproject.server.game.rooms.objects.items.data.MoodlightData;
 import com.cometproject.server.game.rooms.objects.items.data.MoodlightPresetData;
-import com.cometproject.server.game.rooms.objects.items.types.wall.MoodlightWallItem;
+import com.cometproject.game.items.wall.MoodlightWallItem;
 import com.cometproject.server.storage.SqlHelper;
 
 import java.sql.Connection;

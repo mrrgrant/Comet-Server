@@ -4,7 +4,7 @@ import com.cometproject.api.game.quests.QuestType;
 import com.cometproject.server.game.items.ItemManager;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
 import com.cometproject.server.game.rooms.objects.items.RoomItemWall;
-import com.cometproject.server.game.rooms.objects.items.types.wall.PostItWallItem;
+import com.cometproject.game.items.wall.PostItWallItem;
 import com.cometproject.server.game.rooms.types.Room;
 import com.cometproject.server.network.NetworkManager;
 import com.cometproject.server.network.messages.incoming.Event;

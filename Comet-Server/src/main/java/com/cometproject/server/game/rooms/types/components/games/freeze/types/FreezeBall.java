@@ -1,6 +1,6 @@
 package com.cometproject.server.game.rooms.types.components.games.freeze.types;
 
-import com.cometproject.server.game.rooms.objects.items.types.floor.games.freeze.FreezeTileFloorItem;
+import com.cometproject.game.items.floor.games.freeze.FreezeTileFloorItem;
 
 public class FreezeBall {
     public static final int START_TICKS = 2;

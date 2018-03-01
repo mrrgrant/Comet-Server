@@ -12,7 +12,7 @@ import com.cometproject.server.game.players.types.Player;
 import com.cometproject.server.game.rooms.filter.WordFilter;
 import com.cometproject.api.game.rooms.models.CustomFloorMapData;
 import com.cometproject.server.game.rooms.models.types.StaticRoomModel;
-import com.cometproject.server.game.rooms.objects.items.types.floor.wired.WiredUtil;
+import com.cometproject.game.items.floor.wired.WiredUtil;
 import com.cometproject.server.game.rooms.types.Room;
 import com.cometproject.server.game.rooms.types.RoomPromotion;
 import com.cometproject.server.game.rooms.types.RoomReloadListener;

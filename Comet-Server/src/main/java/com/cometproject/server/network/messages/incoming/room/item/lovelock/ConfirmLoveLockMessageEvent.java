@@ -3,7 +3,7 @@ package com.cometproject.server.network.messages.incoming.room.item.lovelock;
 import com.cometproject.server.game.items.ItemManager;
 import com.cometproject.server.game.rooms.objects.entities.types.PlayerEntity;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
-import com.cometproject.server.game.rooms.objects.items.types.floor.LoveLockFloorItem;
+import com.cometproject.game.items.floor.LoveLockFloorItem;
 import com.cometproject.server.game.rooms.types.Room;
 import com.cometproject.server.network.messages.incoming.Event;
 import com.cometproject.server.network.messages.outgoing.room.items.UpdateFloorItemMessageComposer;

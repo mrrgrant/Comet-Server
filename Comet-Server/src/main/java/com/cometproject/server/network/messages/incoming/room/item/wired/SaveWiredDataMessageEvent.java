@@ -6,7 +6,7 @@ import com.cometproject.server.game.items.ItemManager;
 import com.cometproject.server.game.rooms.RoomManager;
 import com.cometproject.server.game.rooms.filter.FilterResult;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
-import com.cometproject.server.game.rooms.objects.items.types.floor.wired.WiredFloorItem;
+import com.cometproject.game.items.floor.wired.WiredFloorItem;
 import com.cometproject.game.items.wired.actions.WiredActionGiveReward;
 import com.cometproject.game.items.wired.actions.WiredActionMatchToSnapshot;
 import com.cometproject.game.items.wired.base.WiredActionItem;

@@ -4,7 +4,7 @@ import com.cometproject.api.game.GameContext;
 import com.cometproject.server.config.Locale;
 import com.cometproject.server.game.commands.ChatCommand;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
-import com.cometproject.server.game.rooms.objects.items.types.floor.wired.WiredFloorItem;
+import com.cometproject.game.items.floor.wired.WiredFloorItem;
 import com.cometproject.server.game.rooms.types.Room;
 import com.cometproject.server.network.messages.outgoing.room.items.RemoveFloorItemMessageComposer;
 import com.cometproject.server.network.messages.outgoing.room.items.SendFloorItemMessageComposer;

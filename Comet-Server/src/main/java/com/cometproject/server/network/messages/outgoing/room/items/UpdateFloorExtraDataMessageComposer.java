@@ -4,8 +4,8 @@
 //import com.cometproject.server.game.groups.GroupManager;
 //import com.cometproject.server.game.groups.types.GroupData;
 //import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
-//import com.cometproject.server.game.rooms.objects.items.types.floor.boutique.MannequinFloorItem;
-//import com.cometproject.server.game.rooms.objects.items.types.floor.groups.GroupFloorItem;
+//import com.cometproject.game.items.floor.boutique.MannequinFloorItem;
+//import com.cometproject.game.items.floor.groups.GroupFloorItem;
 //import com.cometproject.game.items.wired.highscore.HighscoreClassicFloorItem;
 //import com.cometproject.server.network.messages.composers.MessageComposer;
 //import com.cometproject.server.protocol.headers.Composers;

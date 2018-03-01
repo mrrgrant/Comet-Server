@@ -2,7 +2,7 @@ package com.cometproject.server.network.messages.outgoing.room.items;
 
 import com.cometproject.api.networking.messages.IComposer;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
-import com.cometproject.server.game.rooms.objects.items.types.floor.wired.WiredFloorItem;
+import com.cometproject.game.items.floor.wired.WiredFloorItem;
 import com.cometproject.server.game.rooms.types.Room;
 import com.cometproject.server.protocol.headers.Composers;
 import com.cometproject.server.protocol.messages.MessageComposer;

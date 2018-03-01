@@ -2,7 +2,7 @@ package com.cometproject.server.network.messages.outgoing.music.playlist;
 
 import com.cometproject.api.networking.messages.IComposer;
 import com.cometproject.server.game.items.music.SongItemData;
-import com.cometproject.server.game.rooms.objects.items.types.floor.SoundMachineFloorItem;
+import com.cometproject.game.items.floor.SoundMachineFloorItem;
 import com.cometproject.server.protocol.headers.Composers;
 import com.cometproject.server.protocol.messages.MessageComposer;
 

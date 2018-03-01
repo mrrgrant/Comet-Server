@@ -3,7 +3,7 @@ package com.cometproject.server.network.messages.incoming.music.playlist;
 import com.cometproject.server.game.items.ItemManager;
 import com.cometproject.server.game.items.music.SongItemData;
 import com.cometproject.server.game.players.components.types.inventory.InventoryItem;
-import com.cometproject.server.game.rooms.objects.items.types.floor.SoundMachineFloorItem;
+import com.cometproject.game.items.floor.SoundMachineFloorItem;
 import com.cometproject.server.game.rooms.types.Room;
 import com.cometproject.server.network.messages.incoming.Event;
 import com.cometproject.server.network.messages.outgoing.music.playlist.PlaylistMessageComposer;

@@ -1,7 +1,7 @@
 package com.cometproject.server.network.messages.incoming.room.pets;
 
 import com.cometproject.server.game.rooms.objects.entities.types.PetEntity;
-import com.cometproject.server.game.rooms.objects.items.types.floor.pet.breeding.BreedingBoxFloorItem;
+import com.cometproject.game.items.floor.pet.breeding.BreedingBoxFloorItem;
 import com.cometproject.server.network.sessions.Session;
 import com.cometproject.server.protocol.messages.MessageEvent;
 

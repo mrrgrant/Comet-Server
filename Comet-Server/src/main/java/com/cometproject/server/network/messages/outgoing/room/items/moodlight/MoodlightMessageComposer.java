@@ -2,7 +2,7 @@ package com.cometproject.server.network.messages.outgoing.room.items.moodlight;
 
 import com.cometproject.api.networking.messages.IComposer;
 import com.cometproject.server.game.rooms.objects.items.data.MoodlightPresetData;
-import com.cometproject.server.game.rooms.objects.items.types.wall.MoodlightWallItem;
+import com.cometproject.game.items.wall.MoodlightWallItem;
 import com.cometproject.server.protocol.headers.Composers;
 import com.cometproject.server.protocol.messages.MessageComposer;
 

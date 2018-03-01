@@ -6,7 +6,7 @@ import com.cometproject.server.game.rooms.RoomManager;
 import com.cometproject.server.game.rooms.filter.FilterResult;
 import com.cometproject.server.game.rooms.objects.entities.types.PlayerEntity;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
-import com.cometproject.server.game.rooms.objects.items.types.floor.PrivateChatFloorItem;
+import com.cometproject.game.items.floor.PrivateChatFloorItem;
 import com.cometproject.server.logging.LogManager;
 import com.cometproject.server.logging.entries.RoomChatLogEntry;
 import com.cometproject.server.network.messages.incoming.Event;

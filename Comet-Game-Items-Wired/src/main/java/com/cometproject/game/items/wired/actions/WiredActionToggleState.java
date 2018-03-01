@@ -3,7 +3,7 @@ package com.cometproject.game.items.wired.actions;
 import com.cometproject.api.game.rooms.objects.data.RoomItemData;
 import com.cometproject.api.game.utilities.Position;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
-import com.cometproject.server.game.rooms.objects.items.types.floor.DiceFloorItem;
+import com.cometproject.game.items.floor.DiceFloorItem;
 import com.cometproject.game.items.wired.WiredFloorItem;
 import com.cometproject.game.items.wired.base.WiredActionItem;
 import com.cometproject.game.items.wired.events.WiredItemEvent;

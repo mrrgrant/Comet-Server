@@ -5,7 +5,7 @@ import com.cometproject.api.game.groups.types.IGroup;
 import com.cometproject.server.composers.group.GroupFurnitureWidgetMessageComposer;
 import com.cometproject.server.game.items.ItemManager;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
-import com.cometproject.server.game.rooms.objects.items.types.floor.groups.GroupFloorItem;
+import com.cometproject.game.items.floor.groups.GroupFloorItem;
 import com.cometproject.server.network.messages.incoming.Event;
 import com.cometproject.server.network.sessions.Session;
 import com.cometproject.server.protocol.messages.MessageEvent;

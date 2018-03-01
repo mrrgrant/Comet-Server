@@ -3,7 +3,7 @@ package com.cometproject.server.network.messages.incoming.group.settings;
 import com.cometproject.api.game.GameContext;
 import com.cometproject.api.game.groups.types.IGroup;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
-import com.cometproject.server.game.rooms.objects.items.types.floor.groups.GroupFloorItem;
+import com.cometproject.game.items.floor.groups.GroupFloorItem;
 import com.cometproject.server.game.rooms.types.Room;
 import com.cometproject.server.network.messages.incoming.Event;
 import com.cometproject.server.network.messages.outgoing.room.engine.RoomDataMessageComposer;

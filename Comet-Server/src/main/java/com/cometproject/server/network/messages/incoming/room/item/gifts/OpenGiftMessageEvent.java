@@ -11,7 +11,7 @@ import com.cometproject.server.game.catalog.CatalogManager;
 import com.cometproject.server.game.items.ItemManager;
 import com.cometproject.server.game.players.components.types.inventory.InventoryItem;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
-import com.cometproject.server.game.rooms.objects.items.types.floor.GiftFloorItem;
+import com.cometproject.game.items.floor.GiftFloorItem;
 import com.cometproject.server.game.rooms.types.Room;
 import com.cometproject.server.network.messages.incoming.Event;
 import com.cometproject.server.network.messages.outgoing.room.gifts.OpenGiftMessageComposer;
