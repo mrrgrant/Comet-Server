@@ -1,6 +1,8 @@
 package com.cometproject.server.game.rooms.types.mapping;
 
 import com.cometproject.api.game.rooms.models.IRoomModel;
+import com.cometproject.api.game.rooms.tiles.RoomEntityMovementNode;
+import com.cometproject.api.game.rooms.tiles.RoomTileStatusType;
 import com.cometproject.api.game.utilities.Position;
 import com.cometproject.server.game.rooms.objects.RoomFloorObject;
 import com.cometproject.server.game.rooms.objects.entities.RoomEntity;

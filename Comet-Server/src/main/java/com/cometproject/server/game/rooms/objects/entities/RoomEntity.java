@@ -13,7 +13,7 @@ import com.cometproject.server.game.rooms.objects.entities.types.ai.BotAI;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
 import com.cometproject.game.items.floor.SeatFloorItem;
 import com.cometproject.server.game.rooms.types.Room;
-import com.cometproject.server.game.rooms.types.mapping.RoomEntityMovementNode;
+import com.cometproject.api.game.rooms.tiles.RoomEntityMovementNode;
 import com.cometproject.server.game.rooms.types.mapping.RoomTile;
 import com.cometproject.api.game.rooms.models.RoomTileState;
 import com.cometproject.server.network.messages.outgoing.room.avatar.*;

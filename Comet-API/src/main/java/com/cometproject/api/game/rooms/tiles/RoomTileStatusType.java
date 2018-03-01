@@ -1,4 +1,4 @@
-package com.cometproject.server.game.rooms.types.mapping;
+package com.cometproject.api.game.rooms.tiles;
 
 public enum RoomTileStatusType {
     NONE,

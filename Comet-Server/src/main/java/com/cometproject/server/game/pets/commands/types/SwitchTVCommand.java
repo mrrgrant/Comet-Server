@@ -4,7 +4,7 @@ import com.cometproject.server.game.pets.commands.PetCommand;
 import com.cometproject.server.game.rooms.objects.entities.types.PetEntity;
 import com.cometproject.server.game.rooms.objects.entities.types.PlayerEntity;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
-import com.cometproject.server.game.rooms.types.mapping.RoomEntityMovementNode;
+import com.cometproject.api.game.rooms.tiles.RoomEntityMovementNode;
 import com.cometproject.server.game.rooms.types.mapping.RoomTile;
 import com.cometproject.server.tasks.CometThreadManager;
 

@@ -2,7 +2,10 @@ package com.cometproject.api.game.rooms.entities;
 
 import com.cometproject.api.game.utilities.Position;
 
-public interface IMobileRoomEntity extends RoomEntity {
+public interface IMobileRoomEntity extends IRoomEntity {
+    int getHeadRotation();
+
+    int getBodyRotation();
 
     void setBodyRotation(int bodyRotation);
 
@@ -13,5 +16,4 @@ public interface IMobileRoomEntity extends RoomEntity {
     void moveTo(Position position);
 
     void warpTo(Position position);
-
 }

@@ -1,5 +1,7 @@
 package com.cometproject.server.game.rooms.types.mapping;
 
+import com.cometproject.api.game.rooms.tiles.RoomEntityMovementNode;
+import com.cometproject.api.game.rooms.tiles.RoomTileStatusType;
 import com.cometproject.api.game.utilities.Position;
 import com.cometproject.server.game.rooms.objects.RoomObject;
 import com.cometproject.server.game.rooms.objects.entities.RoomEntity;
@@ -25,7 +27,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
 
-public class RoomTile {
+public class RoomTile implements IRoomTile {
     public Set<RoomEntity> entities;
     private RoomMapping mappingInstance;
     private Position position;
@@ -55,6 +57,7 @@ public class RoomTile {
         this.reload();
     }
 
+    @Override
     public List<RoomTile> getAdjacentTiles(Position from) {
         final List<RoomTile> roomTiles = Lists.newArrayList();
 
@@ -76,6 +79,7 @@ public class RoomTile {
         return roomTiles;
     }
 
+    @Override
     public void reload() {
         // reset the tile data
         this.hasItems = false;
@@ -244,12 +248,14 @@ public class RoomTile {
             this.originalHeight = this.stackHeight;
     }
 
+    @Override
     public void dispose() {
         this.pendingEvents.clear();
         this.items.clear();
         this.entities.clear();
     }
 
+    @Override
     public void onEntityEntersTile(RoomEntity entity) {
         if (this.pendingEvents.containsKey(entity.getId())) {
             this.pendingEvents.get(entity.getId()).accept(entity);
@@ -257,18 +263,22 @@ public class RoomTile {
         }
     }
 
+    @Override
     public void scheduleEvent(int entityId, Consumer<RoomEntity> event) {
         this.pendingEvents.put(entityId, event);
     }
 
+    @Override
     public RoomEntityMovementNode getMovementNode() {
         return this.movementNode;
     }
 
+    @Override
     public double getStackHeight() {
         return this.getStackHeight(null);
     }
 
+    @Override
     public double getStackHeight(RoomItemFloor itemToStack) {
         RoomItemFloor topItem = this.getTopItemInstance();
 
@@ -283,6 +293,7 @@ public class RoomTile {
         return stackHeight;
     }
 
+    @Override
     public double getWalkHeight() {
         double height = this.stackHeight;
 
@@ -303,16 +314,19 @@ public class RoomTile {
         return height;
     }
 
+    @Override
     public boolean isReachable(RoomEntity entity) {
         List<Square> path = EntityPathfinder.getInstance().makePath(entity, this.position);
         return path != null && path.size() > 0;
     }
 
+    @Override
     public boolean isReachable(RoomObject object) {
         List<Square> path = ItemPathfinder.getInstance().makePath(object, this.position);
         return path != null && path.size() > 0;
     }
 
+    @Override
     public RoomEntity getEntity() {
         for (RoomEntity entity : this.getEntities()) {
             return entity;
@@ -321,78 +335,97 @@ public class RoomTile {
         return null;
     }
 
+    @Override
     public Set<RoomEntity> getEntities() {
         return this.entities;
     }
 
+    @Override
     public RoomTileStatusType getStatus() {
         return this.status;
     }
 
+    @Override
     public Position getPosition() {
         return this.position;
     }
 
+    @Override
     public boolean canStack() {
         return this.canStack;
     }
 
+    @Override
     public long getTopItem() {
         return this.topItem;
     }
 
+    @Override
     public void setTopItem(int topItem) {
         this.topItem = topItem;
     }
 
+    @Override
     public RoomItemFloor getTopItemInstance() {
         return this.mappingInstance.getRoom().getItems().getFloorItem(this.getTopItem());
     }
 
+    @Override
     public Position getRedirect() {
         return redirect;
     }
 
+    @Override
     public void setRedirect(Position redirect) {
         this.redirect = redirect;
     }
 
+    @Override
     public long getOriginalTopItem() {
         return originalTopItem;
     }
 
+    @Override
     public double getOriginalHeight() {
         return originalHeight;
     }
 
+    @Override
     public boolean canPlaceItemHere() {
         return canPlaceItemHere;
     }
 
+    @Override
     public boolean hasItems() {
         return hasItems;
     }
 
+    @Override
     public double getTileHeight() {
         return this.mappingInstance.getModel().getSquareHeight()[this.position.getX()][this.position.getY()];
     }
 
+    @Override
     public boolean hasMagicTile() {
         return this.hasMagicTile;
     }
 
+    @Override
     public List<RoomItemFloor> getItems() {
         return items;
     }
 
+    @Override
     public boolean hasAdjustableHeight() {
         return hasAdjustableHeight;
     }
 
+    @Override
     public RoomTileState getState() {
         return state;
     }
 
+    @Override
     public boolean hasGate() {
         return this.hasGate;
     }

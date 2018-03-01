@@ -11,9 +11,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
-public abstract class Pathfinder {
-    public static final byte DISABLE_DIAGONAL = 0;
-    public static final byte ALLOW_DIAGONAL = 1;
+public abstract class Pathfinder implements IPathfinder {
     private final Position[] diagonalMovePoints = {
             new Position(-1, -1),
             new Position(0, -1),
@@ -31,10 +29,12 @@ public abstract class Pathfinder {
             new Position(-1, 0)
     };
 
+    @Override
     public List<Square> makePath(RoomObject roomFloorObject, Position end) {
         return this.makePath(roomFloorObject, end, ALLOW_DIAGONAL, false);
     }
 
+    @Override
     public List<Square> makePath(RoomObject roomFloorObject, Position end, byte pathfinderMode, boolean isRetry) {
         List<Square> squares = new CopyOnWriteArrayList<>();
 
@@ -127,6 +127,7 @@ public abstract class Pathfinder {
         return null;
     }
 
+    @Override
     public boolean isValidStep(RoomObject roomObject, Position from, Position to, boolean lastStep, boolean isRetry) {
         return (roomObject.getRoom().getMapping().isValidStep(roomObject instanceof RoomEntity ? ((RoomEntity) roomObject).getId() : 0,
                 from, to, lastStep, roomObject instanceof RoomItemFloor, isRetry) ||

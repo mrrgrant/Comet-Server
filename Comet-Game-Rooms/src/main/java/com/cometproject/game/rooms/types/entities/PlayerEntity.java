@@ -4,7 +4,7 @@ import com.cometproject.api.game.players.IPlayer;
 import com.cometproject.api.game.rooms.RoomContext;
 import com.cometproject.api.game.rooms.entities.EntityPosition;
 import com.cometproject.api.game.rooms.entities.IPlayerEntity;
-import com.cometproject.api.game.utilities.Position;
+import com.cometproject.game.rooms.types.entities.base.MobileRoomEntity;
 
 public class PlayerEntity extends MobileRoomEntity implements IPlayerEntity {
     private final IPlayer player;

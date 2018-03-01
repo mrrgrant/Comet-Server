@@ -1,4 +1,4 @@
-package com.cometproject.game.rooms.types.entities;
+package com.cometproject.game.rooms.types.entities.base;
 
 import com.cometproject.api.game.rooms.RoomContext;
 import com.cometproject.api.game.rooms.entities.EntityPosition;
@@ -9,6 +9,16 @@ public class MobileRoomEntity extends RoomEntity implements IMobileRoomEntity {
 
     public MobileRoomEntity(RoomContext roomContext, int entityId, EntityPosition position) {
         super(roomContext, entityId, position);
+    }
+
+    @Override
+    public int getHeadRotation() {
+        return this.entityPosition.getHeadRotation();
+    }
+
+    @Override
+    public int getBodyRotation() {
+        return this.entityPosition.getBodyRotation();
     }
 
     @Override
