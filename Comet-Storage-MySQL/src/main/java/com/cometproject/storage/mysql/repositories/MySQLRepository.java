@@ -164,15 +164,16 @@ public abstract class MySQLRepository {
             try {
                 if(transaction != null) {
                     transaction.rollback();
-
-                    // TODO: make sure we perform any checks here for if the connection is closed, we can't have
-                    //       connection leaks!
                 }
             } catch (Exception ex) {
                 log.error("Failed to rollback transaction", ex);
             }
 
             log.error("Failed to run transaction, rolling back", e);
+        } finally {
+            if(transaction != null && transaction.getConnection() != null) {
+                this.connectionProvider.closeConnection(transaction.getConnection());
+            }
         }
     }
 
