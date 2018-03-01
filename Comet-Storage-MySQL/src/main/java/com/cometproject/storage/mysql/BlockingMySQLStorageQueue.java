@@ -43,7 +43,6 @@ public abstract class BlockingMySQLStorageQueue<T, O> extends Thread {
             final Set<Pair<T, O>> entriesToProcess = new HashSet<>();
 
             while (GameContext.getCurrent() != null) {
-
                 for (int i = 0; i < batchThreshold; i++) {
                     final Pair<T, O> entry = this.queue.poll(50, TimeUnit.MILLISECONDS);
 
@@ -102,6 +101,11 @@ public abstract class BlockingMySQLStorageQueue<T, O> extends Thread {
     }
 
     public void add(T key, O obj) {
+        if (this.queue.contains(obj)) {
+            this.mapping.remove(key);
+            this.queue.remove(obj);
+        }
+
         this.mapping.put(key, obj);
         this.queue.add(new Pair<>(key, obj));
     }
