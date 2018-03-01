@@ -36,4 +36,9 @@ public class RoomComponentFactory implements IRoomComponentFactory {
     public IFilterComponent createFilterComponent(RoomContext roomContext) {
         return new FilterComponent(roomContext);
     }
+
+    @Override
+    public IRightsComponent createRightsComponent(RoomContext roomContext) {
+        return new RightsComponent(roomContext);
+    }
 }
