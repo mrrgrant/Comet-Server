@@ -1,5 +1,6 @@
 package com.cometproject.game.rooms.factories;
 
+import com.cometproject.api.game.rooms.factories.IRoomModelFactory;
 import com.cometproject.api.game.rooms.models.*;
 import com.cometproject.api.utilities.ModelUtils;
 import com.cometproject.game.rooms.models.RoomModel;

@@ -1,6 +1,6 @@
 package com.cometproject.server.game.rooms.types.components.games;
 
-import com.cometproject.server.game.rooms.objects.items.types.floor.wired.addons.WiredAddonBlob;
+import com.cometproject.game.items.wired.addons.WiredAddonBlob;
 import com.cometproject.server.game.rooms.types.Room;
 import com.cometproject.server.game.rooms.types.components.GameComponent;
 import com.cometproject.server.tasks.CometTask;

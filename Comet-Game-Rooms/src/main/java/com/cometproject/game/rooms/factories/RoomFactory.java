@@ -3,7 +3,7 @@ package com.cometproject.game.rooms.factories;
 import com.cometproject.api.game.GameContext;
 import com.cometproject.api.game.rooms.IRoom;
 import com.cometproject.api.game.rooms.IRoomData;
-import com.cometproject.api.game.rooms.IRoomFactory;
+import com.cometproject.api.game.rooms.factories.IRoomFactory;
 import com.cometproject.api.game.rooms.RoomContext;
 import com.cometproject.api.game.rooms.factories.IRoomComponentFactory;
 import com.cometproject.game.rooms.types.Room;

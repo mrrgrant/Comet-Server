@@ -7,7 +7,7 @@ import com.cometproject.server.game.rooms.objects.items.RoomItemFactory;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
 import com.cometproject.server.game.rooms.objects.items.events.types.RollerFloorItemEvent;
 import com.cometproject.server.game.rooms.objects.items.types.AdvancedFloorItem;
-import com.cometproject.server.game.rooms.objects.items.types.floor.wired.triggers.WiredTriggerWalksOffFurni;
+import com.cometproject.game.items.wired.triggers.WiredTriggerWalksOffFurni;
 import com.cometproject.server.game.rooms.types.Room;
 import com.cometproject.server.network.messages.outgoing.room.items.SlideObjectBundleMessageComposer;
 import com.cometproject.server.utilities.collections.ConcurrentHashSet;

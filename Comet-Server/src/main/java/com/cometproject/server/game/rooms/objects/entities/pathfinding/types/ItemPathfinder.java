@@ -8,7 +8,7 @@ import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
 import com.cometproject.server.game.rooms.objects.items.types.floor.RollableFloorItem;
 import com.cometproject.server.game.rooms.objects.items.types.floor.football.FootballFloorItem;
 import com.cometproject.server.game.rooms.objects.items.types.floor.groups.GroupGateFloorItem;
-import com.cometproject.server.game.rooms.objects.items.types.floor.wired.actions.WiredActionChase;
+import com.cometproject.game.items.wired.actions.WiredActionChase;
 import com.cometproject.server.game.rooms.types.mapping.RoomEntityMovementNode;
 import com.cometproject.server.game.rooms.types.mapping.RoomTile;
 import com.cometproject.api.game.rooms.models.RoomTileState;
