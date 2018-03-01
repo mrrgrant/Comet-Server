@@ -4,9 +4,9 @@ import com.cometproject.api.caching.Cache;
 import com.cometproject.api.config.ModuleConfig;
 import com.cometproject.api.game.GameContext;
 import com.cometproject.api.game.rooms.IRoomData;
-import com.cometproject.api.game.rooms.IRoomService;
+import com.cometproject.api.game.rooms.services.IRoomService;
 import com.cometproject.api.game.rooms.factories.IRoomModelFactory;
-import com.cometproject.api.game.rooms.models.IRoomModelService;
+import com.cometproject.api.game.rooms.services.IRoomModelService;
 import com.cometproject.api.modules.BaseModule;
 import com.cometproject.api.server.IGameService;
 import com.cometproject.common.caching.LastReferenceCache;
@@ -38,7 +38,7 @@ public class RoomsModule extends BaseModule {
     }
 
     @Override
-    public void initialiseServices(GameContext gameContext) {
+    public void initialiseGame(GameContext gameContext) {
         this.roomModelService.loadModels();
 
         gameContext.setRoomService(this.roomService);

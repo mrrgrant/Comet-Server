@@ -33,7 +33,7 @@ public class FastFoodModule extends BaseModule {
     }
 
     @Override
-    public void initialiseServices(GameContext gameContext) {
+    public void initialiseGame(GameContext gameContext) {
         final short serverPort = 30010;
 
         this.fastFoodServer = NetworkingContext.getCurrentContext().getServerFactory().createServer(

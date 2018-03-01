@@ -39,7 +39,7 @@ public class GroupsModule extends BaseModule {
     }
 
     @Override
-    public void initialiseServices(GameContext gameContext) {
+    public void initialiseGame(GameContext gameContext) {
         gameContext.setGroupService(this.groupService);
     }
 }

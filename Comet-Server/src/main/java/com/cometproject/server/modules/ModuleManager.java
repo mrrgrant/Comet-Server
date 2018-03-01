@@ -89,7 +89,7 @@ public class ModuleManager implements Initialisable {
         for (BaseModule baseModule : this.modules.values()) {
             baseModule.setup();
 
-            baseModule.initialiseServices(GameContext.getCurrent());
+            baseModule.initialiseGame(GameContext.getCurrent());
         }
     }
 

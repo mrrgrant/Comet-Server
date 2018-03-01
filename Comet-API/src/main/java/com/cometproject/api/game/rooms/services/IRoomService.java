@@ -1,5 +1,6 @@
-package com.cometproject.api.game.rooms;
+package com.cometproject.api.game.rooms.services;
 
+import com.cometproject.api.game.rooms.IRoomData;
 import com.cometproject.api.utilities.Initialisable;
 
 public interface IRoomService {

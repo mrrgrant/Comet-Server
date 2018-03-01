@@ -2,6 +2,7 @@ package com.cometproject.game.rooms.services;
 
 import com.cometproject.api.game.rooms.factories.IRoomModelFactory;
 import com.cometproject.api.game.rooms.models.*;
+import com.cometproject.api.game.rooms.services.IRoomModelService;
 import com.cometproject.storage.api.repositories.IRoomRepository;
 import com.google.common.collect.Maps;
 import org.apache.log4j.Logger;

@@ -5,6 +5,7 @@ import com.cometproject.api.config.ModuleConfig;
 import com.cometproject.api.events.Event;
 import com.cometproject.api.events.EventListenerContainer;
 import com.cometproject.api.game.GameContext;
+import com.cometproject.api.game.rooms.items.IRoomItem;
 import com.cometproject.api.networking.messages.IMessageEventHandler;
 import com.cometproject.api.networking.sessions.ISession;
 import com.cometproject.api.server.IGameService;
@@ -60,6 +61,10 @@ public abstract class BaseModule implements EventListenerContainer {
         this.getGameService().getEventHandler().registerChatCommand(commandExecutor, consumer);
     }
 
+    protected void registerItem(String interactionType, Class<? extends IRoomItem> clazz, GameContext gameContext) {
+        gameContext.getRoomItemService().getItemFactory().registerType(interactionType, clazz);
+    }
+
     public void setup() {
 
     }
@@ -68,7 +73,7 @@ public abstract class BaseModule implements EventListenerContainer {
      * Gets overridden if the module would like to register game services
      * @param gameContext The game context to register the services to
      */
-    public void initialiseServices(GameContext gameContext) {
+    public void initialiseGame(GameContext gameContext) {
 
     }
 

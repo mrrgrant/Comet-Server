@@ -2,7 +2,7 @@ package com.cometproject.game.rooms.services;
 
 import com.cometproject.api.caching.Cache;
 import com.cometproject.api.game.rooms.IRoomData;
-import com.cometproject.api.game.rooms.IRoomService;
+import com.cometproject.api.game.rooms.services.IRoomService;
 import com.cometproject.storage.api.data.Data;
 import com.cometproject.storage.api.repositories.IRoomRepository;
 
