@@ -3,7 +3,6 @@ package com.cometproject.game.rooms.types.components;
 import com.cometproject.api.game.rooms.RoomContext;
 import com.cometproject.api.game.rooms.components.IEntityComponent;
 import com.cometproject.api.game.rooms.entities.IRoomEntity;
-import com.cometproject.api.game.rooms.entities.RoomEntity;
 import com.google.common.collect.Maps;
 
 import java.util.Map;
