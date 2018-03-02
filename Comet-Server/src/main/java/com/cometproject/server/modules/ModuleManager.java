@@ -8,6 +8,8 @@ import com.cometproject.api.server.IGameService;
 import com.cometproject.api.utilities.Initialisable;
 import com.cometproject.api.utilities.JsonUtil;
 import com.cometproject.game.groups.GroupsModule;
+import com.cometproject.game.items.DefaultItemsModule;
+import com.cometproject.game.items.wired.WiredModule;
 import com.cometproject.game.rooms.RoomsModule;
 import com.cometproject.gamecenter.fastfood.FastFoodModule;
 import com.cometproject.server.modules.events.EventHandlerService;
@@ -58,6 +60,8 @@ public class ModuleManager implements Initialisable {
         this.loadCoreModule(GroupsModule.class);
         this.loadCoreModule(FastFoodModule.class);
         this.loadCoreModule(RoomsModule.class);
+        this.loadCoreModule(WiredModule.class);
+        this.loadCoreModule(DefaultItemsModule.class);
 
 //        this.loadModules();
 
