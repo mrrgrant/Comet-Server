@@ -1,10 +1,10 @@
-package com.cometproject.api.game.rooms.items;
+package com.cometproject.api.game.rooms.items.behaviour;
 
 import com.cometproject.api.game.rooms.entities.IRoomEntity;
+import com.cometproject.api.game.rooms.items.IRoomItem;
 import com.cometproject.api.game.utilities.Position;
 
 public interface IActiveRoomItem extends IRoomItem {
-
     void onItemAddedToStack(IRoomItem floorItem);
 
     void onEntityPreStepOn(IRoomEntity entity);
@@ -17,7 +17,5 @@ public interface IActiveRoomItem extends IRoomItem {
 
     void onPositionChanged(Position newPosition);
 
-    boolean isMovementCancelled(IRoomEntity entity);
-
-    boolean isMovementCancelled(IRoomEntity entity, Position position);
+    void onPositionChanged(Position oldPosition, Position newPosition);
 }

@@ -6,6 +6,7 @@ import com.cometproject.api.game.rooms.IRoomData;
 import com.cometproject.api.game.rooms.factories.IRoomFactory;
 import com.cometproject.api.game.rooms.RoomContext;
 import com.cometproject.api.game.rooms.factories.IRoomComponentFactory;
+import com.cometproject.api.game.rooms.models.IRoomModel;
 import com.cometproject.game.rooms.types.Room;
 
 public class RoomFactory implements IRoomFactory {
@@ -17,14 +18,14 @@ public class RoomFactory implements IRoomFactory {
     }
 
     @Override
-    public IRoom createRoom(IRoomData roomData) {
+    public IRoom createRoom(IRoomData roomData, IRoomModel roomModel) {
         final RoomContext roomContext = new RoomContext(GameContext.getCurrent(), roomData);
 
         final IRoom room = new Room(roomContext,
                 this.roomComponentFactory.createEntityComponent(roomContext),
                 this.roomComponentFactory.createGameComponent(roomContext),
                 this.roomComponentFactory.createProcessComponent(roomContext),
-                this.roomComponentFactory.createTileComponent(roomContext),
+                this.roomComponentFactory.createTileComponent(roomContext, roomModel.getSizeX(), roomModel.getSizeY()),
                 this.roomComponentFactory.createTradeComponent(roomContext),
                 this.roomComponentFactory.createFilterComponent(roomContext),
                 this.roomComponentFactory.createRightsComponent(roomContext));

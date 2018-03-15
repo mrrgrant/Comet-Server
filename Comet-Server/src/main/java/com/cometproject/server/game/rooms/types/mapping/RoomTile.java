@@ -1,5 +1,6 @@
 package com.cometproject.server.game.rooms.types.mapping;
 
+import com.cometproject.api.game.rooms.tiles.IRoomTile;
 import com.cometproject.api.game.rooms.tiles.RoomEntityMovementNode;
 import com.cometproject.api.game.rooms.tiles.RoomTileStatusType;
 import com.cometproject.api.game.utilities.Position;
@@ -58,7 +59,7 @@ public class RoomTile implements IRoomTile {
     }
 
     @Override
-    public List<RoomTile> getAdjacentTiles(Position from) {
+    public List<IRoomTile> getAdjacentTiles(Position from) {
         final List<RoomTile> roomTiles = Lists.newArrayList();
 
         for (int rotation : Position.COLLIDE_TILES) {

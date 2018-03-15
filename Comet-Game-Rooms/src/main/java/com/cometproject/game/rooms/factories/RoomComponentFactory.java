@@ -3,13 +3,14 @@ package com.cometproject.game.rooms.factories;
 import com.cometproject.api.game.rooms.RoomContext;
 import com.cometproject.api.game.rooms.components.*;
 import com.cometproject.api.game.rooms.factories.IRoomComponentFactory;
+import com.cometproject.api.game.rooms.factories.IRoomEntityFactory;
 import com.cometproject.game.rooms.types.components.*;
 
 public class RoomComponentFactory implements IRoomComponentFactory {
 
     @Override
-    public IEntityComponent createEntityComponent(RoomContext roomContext) {
-        return new EntityComponent(roomContext);
+    public IEntityComponent createEntityComponent(RoomContext roomContext, IRoomEntityFactory entityFactory) {
+        return new EntityComponent(roomContext, entityFactory);
     }
 
     @Override
@@ -18,8 +19,8 @@ public class RoomComponentFactory implements IRoomComponentFactory {
     }
 
     @Override
-    public ITileComponent createTileComponent(RoomContext roomContext) {
-        return new TileComponent(roomContext);
+    public ITileComponent createTileComponent(RoomContext roomContext, int mapSizeX, int mapSizeY) {
+        return new TileComponent(roomContext, mapSizeX, mapSizeY);
     }
 
     @Override

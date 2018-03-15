@@ -5,11 +5,11 @@ import com.cometproject.api.game.rooms.components.*;
 
 public interface IRoomComponentFactory {
 
-    IEntityComponent createEntityComponent(RoomContext roomContext);
+    IEntityComponent createEntityComponent(RoomContext roomContext, IRoomEntityFactory entityFactory);
 
     IGameComponent createGameComponent(RoomContext roomContext);
 
-    ITileComponent createTileComponent(RoomContext roomContext);
+    ITileComponent createTileComponent(RoomContext roomContext, int mapSizeX, int mapSizeY);
 
     ITradeComponent createTradeComponent(RoomContext roomContext);
 
