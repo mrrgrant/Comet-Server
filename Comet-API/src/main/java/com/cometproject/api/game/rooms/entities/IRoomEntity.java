@@ -1,11 +1,12 @@
 package com.cometproject.api.game.rooms.entities;
 
 import com.cometproject.api.game.rooms.RoomContext;
+import com.cometproject.api.game.rooms.attributes.IAttributableRoomObject;
 import com.cometproject.api.game.utilities.Position;
 
 import java.util.Map;
 
-public interface IRoomEntity {
+public interface IRoomEntity extends IAttributableRoomObject {
     int getId();
 
     Position getPosition();
@@ -21,6 +22,10 @@ public interface IRoomEntity {
     void removeStatus(RoomEntityStatus status);
 
     boolean hasStatus(RoomEntityStatus key);
+
+    void enqueueUpdate();
+
+    boolean hasQueuedUpdate();
 
     RoomContext getContext();
 }

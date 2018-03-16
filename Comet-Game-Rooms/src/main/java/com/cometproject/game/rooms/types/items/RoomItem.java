@@ -5,8 +5,9 @@ import com.cometproject.api.game.rooms.RoomContext;
 import com.cometproject.api.game.rooms.items.IRoomItem;
 import com.cometproject.api.game.rooms.objects.data.RoomItemData;
 import com.cometproject.api.game.rooms.tiles.IRoomTile;
+import com.cometproject.game.rooms.types.attributes.AttributableRoomObject;
 
-public abstract class RoomItem implements IRoomItem {
+public abstract class RoomItem extends AttributableRoomObject implements IRoomItem {
 
     private final int virtualId;
     private final RoomContext roomContext;

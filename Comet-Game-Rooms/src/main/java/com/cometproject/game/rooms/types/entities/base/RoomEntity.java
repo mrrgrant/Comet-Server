@@ -5,16 +5,18 @@ import com.cometproject.api.game.rooms.entities.EntityPosition;
 import com.cometproject.api.game.rooms.entities.IRoomEntity;
 import com.cometproject.api.game.rooms.entities.RoomEntityStatus;
 import com.cometproject.api.game.utilities.Position;
+import com.cometproject.game.rooms.types.attributes.AttributableRoomObject;
 import com.google.common.collect.Maps;
 
 import java.util.Map;
 
-public abstract class RoomEntity implements IRoomEntity {
+public abstract class RoomEntity extends AttributableRoomObject implements IRoomEntity {
 
     private final RoomContext roomContext;
     private final int entityId;
     protected final EntityPosition entityPosition;
 
+    private boolean updateQueued = false;
     private final Map<RoomEntityStatus, String> statuses;
 
     public RoomEntity(RoomContext roomContext, int entityId, EntityPosition entityPosition) {
@@ -63,6 +65,15 @@ public abstract class RoomEntity implements IRoomEntity {
         return this.statuses.containsKey(key);
     }
 
+    @Override
+    public void enqueueUpdate() {
+        this.updateQueued = true;
+    }
+
+    @Override
+    public boolean hasQueuedUpdate() {
+        return this.updateQueued;
+    }
 
     @Override
     public RoomContext getContext() {
