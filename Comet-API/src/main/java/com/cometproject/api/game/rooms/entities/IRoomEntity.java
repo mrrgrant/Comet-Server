@@ -7,8 +7,6 @@ import com.cometproject.api.game.utilities.Position;
 import java.util.Map;
 
 public interface IRoomEntity extends IAttributableRoomObject {
-    int getId();
-
     Position getPosition();
 
     int getHeadRotation();

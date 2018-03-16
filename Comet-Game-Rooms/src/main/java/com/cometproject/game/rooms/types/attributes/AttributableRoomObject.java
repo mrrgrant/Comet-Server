@@ -6,7 +6,7 @@ import com.google.common.collect.Maps;
 
 import java.util.Map;
 
-public class AttributableRoomObject implements IAttributableRoomObject {
+public abstract class AttributableRoomObject implements IAttributableRoomObject {
     private final Map<String, Object> attributes = Maps.newConcurrentMap();
 
     @Override

@@ -2,6 +2,7 @@ package com.cometproject.server.game.rooms.types.components;
 
 import com.cometproject.api.config.CometSettings;
 import com.cometproject.api.game.quests.QuestType;
+import com.cometproject.api.game.rooms.entities.IMobileRoomEntity;
 import com.cometproject.api.game.rooms.entities.RoomEntityStatus;
 import com.cometproject.api.game.utilities.Position;
 import com.cometproject.server.game.rooms.objects.entities.RoomEntity;
@@ -263,7 +264,7 @@ public class ProcessComponent implements CometTask {
         }
     }
 
-    private boolean updateEntityStuff(RoomEntity entity) {
+    private boolean updateEntityStuff(IMobileRoomEntity entity) {
         if (entity.getPositionToSet() != null) {
             if ((entity.getPositionToSet().getX() == this.room.getModel().getDoorX()) && (entity.getPositionToSet().getY() == this.room.getModel().getDoorY())) {
                 boolean leaveRoom = true;

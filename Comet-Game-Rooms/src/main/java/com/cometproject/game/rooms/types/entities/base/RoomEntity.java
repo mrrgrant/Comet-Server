@@ -28,7 +28,7 @@ public abstract class RoomEntity extends AttributableRoomObject implements IRoom
     }
 
     @Override
-    public int getId() {
+    public int getObjectId() {
         return this.entityId;
     }
 
