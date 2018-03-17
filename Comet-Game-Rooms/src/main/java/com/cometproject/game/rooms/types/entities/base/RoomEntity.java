@@ -20,6 +20,8 @@ public abstract class RoomEntity extends AttributableRoomObject implements IRoom
     private final Map<RoomEntityStatus, String> statuses;
 
     public RoomEntity(RoomContext roomContext, int entityId, EntityPosition entityPosition) {
+        super(entityId, entityPosition.getRoomPosition(), roomContext);
+
         this.roomContext = roomContext;
         this.entityId = entityId;
         this.entityPosition = entityPosition;
