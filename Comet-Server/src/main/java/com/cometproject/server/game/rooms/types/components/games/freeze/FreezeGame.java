@@ -1,7 +1,7 @@
 package com.cometproject.server.game.rooms.types.components.games.freeze;
 
 import com.cometproject.server.game.rooms.objects.entities.RoomEntity;
-import com.cometproject.server.game.rooms.objects.entities.effects.PlayerEffect;
+import com.cometproject.api.game.rooms.legacy.entities.PlayerEffect;
 import com.cometproject.server.game.rooms.objects.entities.types.PlayerEntity;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
 import com.cometproject.game.items.floor.games.freeze.FreezeBlockFloorItem;

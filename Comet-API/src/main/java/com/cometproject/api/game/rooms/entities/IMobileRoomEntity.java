@@ -15,5 +15,5 @@ public interface IMobileRoomEntity extends IRoomEntity {
 
     void moveTo(Position position);
 
-    void warpTo(Position position);
+    void warp(Position position);
 }

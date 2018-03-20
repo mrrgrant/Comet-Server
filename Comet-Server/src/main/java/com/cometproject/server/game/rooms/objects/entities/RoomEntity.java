@@ -2,8 +2,9 @@ package com.cometproject.server.game.rooms.objects.entities;
 
 import com.cometproject.api.game.rooms.entities.RoomEntityStatus;
 import com.cometproject.api.game.utilities.Position;
+import com.cometproject.api.game.rooms.legacy.entities.IRoomEntity;
 import com.cometproject.server.game.rooms.objects.RoomFloorObject;
-import com.cometproject.server.game.rooms.objects.entities.effects.PlayerEffect;
+import com.cometproject.api.game.rooms.legacy.entities.PlayerEffect;
 import com.cometproject.server.game.rooms.objects.entities.pathfinding.Square;
 import com.cometproject.server.game.rooms.objects.entities.pathfinding.types.EntityPathfinder;
 import com.cometproject.server.game.rooms.objects.entities.types.BotEntity;
@@ -24,7 +25,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class RoomEntity extends RoomFloorObject implements AvatarEntity {
+public abstract class RoomEntity extends RoomFloorObject implements IRoomEntity {
     public int updatePhase = 0;
     public boolean needsForcedUpdate = false;
     private RoomEntityType entityType;

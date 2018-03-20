@@ -1,6 +1,6 @@
 package com.cometproject.server.network.messages.incoming.user.inventory;
 
-import com.cometproject.server.game.rooms.objects.entities.effects.PlayerEffect;
+import com.cometproject.api.game.rooms.legacy.entities.PlayerEffect;
 import com.cometproject.server.network.messages.incoming.Event;
 import com.cometproject.server.network.messages.outgoing.user.inventory.EffectsInventoryMessageComposer;
 import com.cometproject.server.network.sessions.Session;

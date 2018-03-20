@@ -1,15 +1,15 @@
-package com.cometproject.server.game.rooms.objects.entities.pathfinding;
+package com.cometproject.game.rooms.pathfinding;
 
+import com.cometproject.api.game.rooms.IRoom;
+import com.cometproject.api.game.rooms.legacy.IRoomObject;
+import com.cometproject.api.game.rooms.legacy.entities.IRoomEntity;
+import com.cometproject.api.game.rooms.pathfinding.IPathfinder;
 import com.cometproject.api.game.utilities.Position;
-import com.cometproject.server.game.rooms.objects.RoomObject;
-import com.cometproject.server.game.rooms.objects.entities.RoomEntity;
-import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
 import com.google.common.collect.Lists;
 import com.google.common.collect.MinMaxPriorityQueue;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-
 
 public abstract class Pathfinder implements IPathfinder {
     private final Position[] diagonalMovePoints = {
@@ -30,13 +30,13 @@ public abstract class Pathfinder implements IPathfinder {
     };
 
     @Override
-    public List<Square> makePath(RoomObject roomFloorObject, Position end) {
+    public List<Position> makePath(IRoomObject roomFloorObject, Position end) {
         return this.makePath(roomFloorObject, end, ALLOW_DIAGONAL, false);
     }
 
     @Override
-    public List<Square> makePath(RoomObject roomFloorObject, Position end, byte pathfinderMode, boolean isRetry) {
-        List<Square> squares = new CopyOnWriteArrayList<>();
+    public List<Position> makePath(IRoomObject roomFloorObject, Position end, byte pathfinderMode, boolean isRetry) {
+        List<Position> squares = new CopyOnWriteArrayList<>();
 
         final long startTime = System.currentTimeMillis();
 
@@ -44,17 +44,15 @@ public abstract class Pathfinder implements IPathfinder {
 
         if (nodes != null) {
             while (nodes.getNextNode() != null) {
-                squares.add(new Square(nodes.getPosition().getX(), nodes.getPosition().getY()));
+                squares.add(new Position(nodes.getPosition().getX(), nodes.getPosition().getY()));
                 nodes = nodes.getNextNode();
             }
         }
 
-        //("pathfinding took " + (System.currentTimeMillis() - startTime) + "ms");
-
         return Lists.reverse(squares);
     }
 
-    private PathfinderNode makePathReversed(RoomObject roomFloorObject, Position end, byte pathfinderMode, boolean isRetry) {
+    private PathfinderNode makePathReversed(IRoomObject roomFloorObject, Position end, byte pathfinderMode, boolean isRetry) {
         MinMaxPriorityQueue<PathfinderNode> openList = MinMaxPriorityQueue.maximumSize(256).create();
 
         PathfinderNode[][] map = new PathfinderNode[roomFloorObject.getRoom().getMapping().getModel().getSizeX()][roomFloorObject.getRoom().getMapping().getModel().getSizeY()];
@@ -128,8 +126,8 @@ public abstract class Pathfinder implements IPathfinder {
     }
 
     @Override
-    public boolean isValidStep(RoomObject roomObject, Position from, Position to, boolean lastStep, boolean isRetry) {
-        return (roomObject.getRoom().getMapping().isValidStep(roomObject instanceof RoomEntity ? ((RoomEntity) roomObject).getId() : 0,
+    public boolean isValidStep(IRoomObject roomObject, Position from, Position to, boolean lastStep, boolean isRetry) {
+        return (roomObject.getRoom().getMapping().isValidStep(roomObject instanceof IRoomEntity ? roomObject.getId() : 0,
                 from, to, lastStep, roomObject instanceof RoomItemFloor, isRetry) ||
                 (roomObject instanceof RoomEntity && ((RoomEntity) roomObject).isOverriden()));
     }

@@ -6,7 +6,7 @@ import com.cometproject.server.composers.group.GroupBadgesMessageComposer;
 import com.cometproject.server.game.polls.PollManager;
 import com.cometproject.server.game.polls.types.Poll;
 import com.cometproject.server.game.rooms.objects.entities.RoomEntity;
-import com.cometproject.server.game.rooms.objects.entities.effects.PlayerEffect;
+import com.cometproject.api.game.rooms.legacy.entities.PlayerEffect;
 import com.cometproject.server.game.rooms.objects.entities.types.PetEntity;
 import com.cometproject.server.game.rooms.objects.entities.types.PlayerEntity;
 import com.cometproject.game.items.wired.triggers.WiredTriggerEnterRoom;

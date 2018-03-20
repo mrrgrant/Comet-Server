@@ -1,5 +1,6 @@
 package com.cometproject.server.game.rooms.types.mapping;
 
+import com.cometproject.api.game.rooms.legacy.IRoomObject;
 import com.cometproject.api.game.rooms.tiles.IRoomTile;
 import com.cometproject.api.game.rooms.tiles.RoomEntityMovementNode;
 import com.cometproject.api.game.rooms.tiles.RoomTileStatusType;
@@ -316,13 +317,13 @@ public class RoomTile implements IRoomTile {
     }
 
     @Override
-    public boolean isReachable(RoomEntity entity) {
+    public boolean isReachable(IRoomObject entity) {
         List<Square> path = EntityPathfinder.getInstance().makePath(entity, this.position);
         return path != null && path.size() > 0;
     }
 
     @Override
-    public boolean isReachable(RoomObject object) {
+    public boolean isReachable(IRoomObject object) {
         List<Square> path = ItemPathfinder.getInstance().makePath(object, this.position);
         return path != null && path.size() > 0;
     }

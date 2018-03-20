@@ -1,7 +1,6 @@
 package com.cometproject.api.game.rooms.tiles;
 
-import com.cometproject.api.game.rooms.entities.IRoomEntity;
-import com.cometproject.api.game.rooms.factories.IRoomItemFactory;
+import com.cometproject.api.game.rooms.legacy.entities.IRoomEntity;
 import com.cometproject.api.game.rooms.items.IRoomItem;
 import com.cometproject.api.game.rooms.models.RoomTileState;
 import com.cometproject.api.game.utilities.Position;

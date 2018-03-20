@@ -22,7 +22,7 @@ import com.cometproject.server.game.players.data.PlayerData;
 import com.cometproject.server.game.players.types.Player;
 import com.cometproject.server.game.rooms.RoomManager;
 import com.cometproject.server.game.rooms.RoomQueue;
-import com.cometproject.server.game.rooms.objects.entities.PlayerEntityAccess;
+import com.cometproject.api.game.rooms.legacy.entities.IPlayerEntity;
 import com.cometproject.server.game.rooms.objects.entities.RoomEntity;
 import com.cometproject.server.game.rooms.objects.entities.types.ai.bots.WaiterAI;
 import com.cometproject.server.game.rooms.objects.items.RoomItemFloor;
@@ -62,7 +62,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class PlayerEntity extends RoomEntity implements PlayerEntityAccess, Attributable, PlayerRoomEntity {
+public class PlayerEntity extends RoomEntity implements IPlayerEntity, Attributable, PlayerRoomEntity {
     private static final Logger log = Logger.getLogger(PlayerEntity.class.getName());
     private Player player;
     private PlayerData playerData;

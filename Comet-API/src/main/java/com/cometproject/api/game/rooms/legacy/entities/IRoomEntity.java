@@ -1,17 +1,14 @@
-package com.cometproject.server.game.rooms.objects.entities;
+package com.cometproject.api.game.rooms.legacy.entities;
 
 import com.cometproject.api.game.rooms.entities.RoomEntityStatus;
 import com.cometproject.api.game.utilities.Position;
 import com.cometproject.api.networking.messages.IComposer;
-import com.cometproject.server.game.rooms.objects.entities.effects.PlayerEffect;
-import com.cometproject.server.game.rooms.objects.entities.pathfinding.Square;
-import com.cometproject.server.utilities.attributes.Attributable;
 
 import java.util.List;
 import java.util.Map;
 
 
-public interface AvatarEntity extends Attributable {
+public interface IRoomEntity {
     int getId();
 
     Position getWalkingGoal();
@@ -32,19 +29,19 @@ public interface AvatarEntity extends Attributable {
 
     void setHeadRotation(int rotation);
 
-    List<Square> getWalkingPath();
+    List<Position> getWalkingPath();
 
-    void setWalkingPath(List<Square> path);
+    void setWalkingPath(List<Position> path);
 
-    List<Square> getProcessingPath();
+    List<Position> getProcessingPath();
 
-    void setProcessingPath(List<Square> path);
+    void setProcessingPath(List<Position> path);
 
     boolean isWalking();
 
-    Square getFutureSquare();
+    Position getFutureSquare();
 
-    void setFutureSquare(Square square);
+    void setFutureSquare(Position square);
 
     void moveTo(int x, int y);
 

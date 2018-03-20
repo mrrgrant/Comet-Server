@@ -1,4 +1,4 @@
-package com.cometproject.server.game.rooms.objects.entities.effects;
+package com.cometproject.api.game.rooms.legacy.entities;
 
 public class PlayerEffect {
     private int effectId;

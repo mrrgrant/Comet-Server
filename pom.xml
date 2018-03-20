@@ -42,6 +42,7 @@
         <module>Comet-Game-Items-Default</module>
         <module>Comet-Game-Items-Wired</module>
         <module>Comet-Game-Rooms</module>
+        <module>Comet-Game-Rooms-Pathfinding</module>
 
         <module>Comet-GameCenter-FastFood</module>
         <module>Comet-GameCenter-SnowStorm</module>

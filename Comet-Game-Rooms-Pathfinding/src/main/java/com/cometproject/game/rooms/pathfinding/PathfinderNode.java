@@ -1,4 +1,4 @@
-package com.cometproject.server.game.rooms.objects.entities.pathfinding;
+package com.cometproject.game.rooms.pathfinding;
 
 import com.cometproject.api.game.utilities.Position;
 

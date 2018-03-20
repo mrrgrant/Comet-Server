@@ -1,7 +1,7 @@
 package com.cometproject.server.game.rooms.objects;
 
 import com.cometproject.api.game.bots.BotType;
-import com.cometproject.api.game.rooms.objects.IRoomObject;
+import com.cometproject.api.game.rooms.legacy.IRoomObject;
 import com.cometproject.api.game.utilities.Position;
 import com.cometproject.api.game.utilities.Positionable;
 import com.cometproject.server.game.rooms.objects.entities.types.BotEntity;

@@ -1,5 +1,6 @@
 package com.cometproject.server.game.rooms.types.mapping;
 
+import com.cometproject.api.game.rooms.legacy.IRoomObject;
 import com.cometproject.api.game.rooms.models.IRoomModel;
 import com.cometproject.api.game.rooms.tiles.RoomEntityMovementNode;
 import com.cometproject.api.game.rooms.tiles.RoomTileStatusType;
@@ -121,7 +122,7 @@ public class RoomMapping {
         return this.tiles[x][y];
     }
 
-    public RoomTile getRandomReachableTile(RoomFloorObject roomFloorObject) {
+    public RoomTile getRandomReachableTile(IRoomObject roomFloorObject) {
         for (int tries = 0; tries < this.getModel().getSizeX() * this.getModel().getSizeY(); tries++) {
             int randomX = RandomUtil.getRandomInt(0, this.getModel().getSizeX() - 1);
             int randomY = RandomUtil.getRandomInt(0, this.getModel().getSizeY() - 1);
