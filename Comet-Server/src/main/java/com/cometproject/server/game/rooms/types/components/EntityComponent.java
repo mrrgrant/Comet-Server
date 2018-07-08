@@ -102,7 +102,7 @@ public class EntityComponent {
         if (entity.getEntityType() == RoomEntityType.PLAYER) {
             PlayerEntity playerEntity = (PlayerEntity) entity;
 
-            this.nameToPlayerEntity.put(entity.getUsername(), playerEntity.getPlayerId());
+            this.nameToPlayerEntity.put(entity.getUsername(), playerEntity.getId());
             this.playerIdToEntity.put(playerEntity.getPlayerId(), playerEntity.getId());
         } else if (entity.getEntityType() == RoomEntityType.BOT) {
             BotEntity botEntity = (BotEntity) entity;
@@ -212,10 +212,11 @@ public class EntityComponent {
     }
 
     public PlayerEntity getPlayerEntityByName(final String username) {
-        final Integer playerId = this.nameToPlayerEntity.get(username);
+        final Integer entityId = this.nameToPlayerEntity.get(username);
 
-        if (playerId != null) {
-            return this.getEntityByPlayerId(playerId);
+        if (entityId != null) {
+            final RoomEntity entity = this.getEntity(entityId);
+            return entity instanceof PlayerEntity ? (PlayerEntity) entity : null;
         }
 
         return null;
