@@ -95,19 +95,19 @@ public class NavigatorSearchService implements CometTask {
                                     PlayerEntity playerEntity = (PlayerEntity) messengerFriend.getSession().getPlayer().getEntity();
 
                                     if (playerEntity != null) {
-                                        if (playerEntity.getRoom().getData().getOwnerId() == playerEntity.getPlayerId()) {
-                                            if (playerEntity.getRoom().getData().getAccess() == RoomAccessType.INVISIBLE && player.getData().getRank() < 3) {
-                                                if (playerEntity.getRoom().getGroup() != null) {
+//                                        if (playerEntity.getRoom().getData().getOwnerId() == playerEntity.getPlayerId()) {
+                                        if (playerEntity.getRoom().getData().getAccess() == RoomAccessType.INVISIBLE && player.getData().getRank() < 3) {
+                                            if (playerEntity.getRoom().getGroup() != null) {
+                                                continue;
+                                            } else {
+                                                if (!playerEntity.getRoom().getRights().hasRights(player.getId())) {
                                                     continue;
-                                                } else {
-                                                    if (!playerEntity.getRoom().getRights().hasRights(player.getId())) {
-                                                        continue;
-                                                    }
                                                 }
                                             }
-
-                                            friendsRoomsNotEmpty = true;
                                         }
+
+                                        friendsRoomsNotEmpty = true;
+//                                        }
                                     }
                                 }
                             }
@@ -324,7 +324,7 @@ public class NavigatorSearchService implements CometTask {
 
                         if (playerEntity != null) {
                             if (!friendsRooms.contains(playerEntity.getRoom().getData())) {
-                                if (playerEntity.getRoom().getData().getOwnerId() == playerEntity.getPlayerId()) {
+//                                if (playerEntity.getRoom().getData().getOwnerId() == playerEntity.getPlayerId()) {
                                     if (playerEntity.getRoom().getData().getAccess() == RoomAccessType.INVISIBLE && player.getData().getRank() < 3) {
                                         if (playerEntity.getRoom().getGroup() != null) {
                                             continue;
@@ -336,7 +336,7 @@ public class NavigatorSearchService implements CometTask {
                                     }
 
                                     friendsRooms.add(playerEntity.getRoom().getData());
-                                }
+//                                }
                             }
                         }
                     }
