@@ -148,7 +148,9 @@ public abstract class RoomEntity extends RoomFloorObject implements AvatarEntity
             return;
 
         if (tile.getState() == RoomTileState.INVALID || tile.getMovementNode() == RoomEntityMovementNode.CLOSED) {
-            return;
+            if (tile.getRedirect() == null) {
+                return;
+            }
         }
 
 //        if(this instanceof PlayerEntity) {
@@ -169,13 +171,13 @@ public abstract class RoomEntity extends RoomFloorObject implements AvatarEntity
 //            }
 //        }
 
-        this.previousSteps = 0;
-
         // reassign the position values if they're set to redirect
         if (tile.getRedirect() != null) {
             x = tile.getRedirect().getX();
             y = tile.getRedirect().getY();
         }
+
+        this.previousSteps = 0;
 
 //        if (this.getPositionToSet() != null) {
 //            RoomTile oldTile = this.getRoom().getMapping().getTile(this.getPosition());
@@ -864,8 +866,8 @@ public abstract class RoomEntity extends RoomFloorObject implements AvatarEntity
     }
 
     public void addToTile(RoomTile tile) {
-        if(this.tiles.size() != 0) {
-            for(RoomTile oldTile : this.tiles) {
+        if (this.tiles.size() != 0) {
+            for (RoomTile oldTile : this.tiles) {
                 oldTile.getEntities().remove(this);
             }
 

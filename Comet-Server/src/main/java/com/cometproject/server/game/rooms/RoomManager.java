@@ -24,13 +24,11 @@ import com.cometproject.server.network.sessions.Session;
 import com.cometproject.server.storage.cache.CacheManager;
 import com.cometproject.server.storage.cache.objects.RoomDataObject;
 import com.cometproject.server.storage.queries.rooms.RoomDao;
+import com.google.common.collect.Sets;
 import org.apache.log4j.Logger;
 import org.apache.solr.util.ConcurrentLRUCache;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -50,6 +48,8 @@ public class RoomManager implements Initialisable {
     private Map<Integer, RoomPromotion> roomPromotions;
 
     private Map<String, StaticRoomModel> models;
+    private final Set<Integer> deletedRooms = Sets.newConcurrentHashSet();
+
     private WordFilter filterManager;
 
     private RoomCycle globalCycle;
@@ -108,6 +108,8 @@ public class RoomManager implements Initialisable {
     }
 
     public void initializeRoom(Session initializer, int roomId, String password) {
+        if (this.deletedRooms.contains(roomId)) return;
+
         this.executorService.submit(() -> {
             if (initializer != null && initializer.getPlayer() != null) {
                 initializer.getPlayer().loadRoom(roomId, password);
@@ -243,6 +245,13 @@ public class RoomManager implements Initialisable {
         }
 
         this.getRoomDataInstances().remove(roomId);
+    }
+
+    public void roomDeleted(int roomId) {
+        this.removeData(roomId);
+        this.forceUnload(roomId);
+
+        this.deletedRooms.add(roomId);
     }
 
     public void addReloadListener(int roomId, RoomReloadListener listener) {

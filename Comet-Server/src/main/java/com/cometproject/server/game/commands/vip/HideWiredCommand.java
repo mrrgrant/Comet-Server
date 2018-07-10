@@ -15,10 +15,6 @@ public class HideWiredCommand extends ChatCommand {
     public void execute(Session client, String[] params) {
         final Room room = client.getPlayer().getEntity().getRoom();
 
-        if (!client.getPlayer().getPermissions().getRank().roomFullControl() && !client.getPlayer().getEntity().hasRights()) {
-            return;
-        }
-
         String msg = "";
 
         if (client.getPlayer().getEntity().getRoom().getData().isWiredHidden()) {

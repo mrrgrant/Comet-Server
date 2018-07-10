@@ -7,8 +7,6 @@ import com.cometproject.server.config.Locale;
 import com.cometproject.server.game.commands.development.*;
 import com.cometproject.server.game.commands.gimmicks.KissCommand;
 import com.cometproject.server.game.commands.gimmicks.PunchCommand;
-import com.cometproject.server.game.commands.gimmicks.HugCommand;
-import com.cometproject.server.game.commands.gimmicks.RobCommand;
 import com.cometproject.server.game.commands.notifications.NotificationManager;
 import com.cometproject.server.game.commands.staff.*;
 import com.cometproject.server.game.commands.staff.alerts.*;
@@ -155,9 +153,7 @@ public class CommandManager implements Initialisable {
         this.addCommand(Locale.get("command.namecolour.name"), new NameColourCommand());
 
         // Gimmick commands
-        this.addCommand(Locale.get("command.rob.name"), new RobCommand());
         this.addCommand(Locale.get("command.kiss.name"), new KissCommand());
-        this.addCommand(Locale.get("command.hug.name"), new HugCommand());
         this.addCommand(Locale.get("command.punch.name"), new PunchCommand());
     }
 
@@ -332,7 +328,7 @@ public class CommandManager implements Initialisable {
             return true;
         } else {
             if (PermissionsManager.getInstance().getCommands().containsKey(commandName) &&
-                    PermissionsManager.getInstance().getCommands().get(commandName).isVipOnly() &&
+                    PermissionsManager.getInstance().getCommands().get(commandName).vipOnly() &&
                     !client.getPlayer().getData().isVip())
                 ChatCommand.sendNotif(Locale.get("command.vip"), client);
 
