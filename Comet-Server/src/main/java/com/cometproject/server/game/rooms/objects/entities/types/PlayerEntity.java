@@ -6,6 +6,7 @@ import com.cometproject.api.game.achievements.types.AchievementType;
 import com.cometproject.api.game.bots.BotMode;
 import com.cometproject.api.game.bots.BotType;
 import com.cometproject.api.game.groups.types.IGroupData;
+import com.cometproject.api.game.players.data.types.MentionType;
 import com.cometproject.api.game.quests.QuestType;
 import com.cometproject.api.game.rooms.entities.PlayerRoomEntity;
 import com.cometproject.api.game.rooms.entities.RoomEntityStatus;
@@ -35,6 +36,7 @@ import com.cometproject.server.logging.entries.RoomVisitLogEntry;
 import com.cometproject.server.network.NetworkManager;
 import com.cometproject.server.network.messages.incoming.room.engine.InitializeRoomMessageEvent;
 import com.cometproject.server.network.messages.outgoing.messenger.InstantChatMessageComposer;
+import com.cometproject.server.network.messages.outgoing.notification.NotificationMessageComposer;
 import com.cometproject.server.network.messages.outgoing.room.access.DoorbellRequestComposer;
 import com.cometproject.server.network.messages.outgoing.room.access.RoomReadyMessageComposer;
 import com.cometproject.server.network.messages.outgoing.room.alerts.CantConnectMessageComposer;
@@ -54,6 +56,7 @@ import com.cometproject.server.network.sessions.Session;
 import com.cometproject.server.protocol.messages.MessageComposer;
 import com.cometproject.server.storage.queries.pets.RoomPetDao;
 import com.cometproject.server.utilities.attributes.Attributable;
+import com.google.common.collect.Maps;
 import org.apache.log4j.Logger;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -492,6 +495,45 @@ public class PlayerEntity extends RoomEntity implements PlayerEntityAccess, Attr
 
         if (this.getRoom().getEntities().playerCount() > 1) {
             this.getPlayer().getQuests().progressQuest(QuestType.SOCIAL_CHAT);
+        }
+
+        if (message.startsWith("@")) {
+            String finalName;
+            String[] splittedName = message.replace("@", "").split(" ");
+            finalName = splittedName[0];
+
+            Session session = NetworkManager.getInstance().getSessions().getByPlayerUsername(finalName);
+
+            if (session != null) {
+                final MentionType mentionSetting = session.getPlayer().getSettings().getMentionType();
+
+                if (mentionSetting == MentionType.FRIENDS &&
+                        session.getPlayer().getMessenger().getFriendById(this.getPlayerId()) != null || mentionSetting == MentionType.ALL) {
+                    Map<String, String> notificationParams = Maps.newHashMap();
+
+                    notificationParams.put("message", Locale.getOrDefault("mention.message", "The user %s has mentioned you in a room (%b), click here to go to the room.")
+                            .replace("%s", this.getUsername())
+                            .replace("%b", message));
+                    notificationParams.put("image", "${image.library.url}notifications/twitter.png");
+                    notificationParams.put("linkUrl", "event:navigator/goto/" + this.getRoom().getId());
+
+                    session.send(new NotificationMessageComposer("furni_placement_error", notificationParams));
+                    this.getPlayer().getSession().send(new WhisperMessageComposer(this.getPlayerId(), Locale.getOrDefault("mention.success", "You've mention %s successfully")
+                            .replace("%s", finalName), 34));
+                } else {
+                    if (mentionSetting == MentionType.FRIENDS) {
+                        this.getPlayer().getSession().send(new WhisperMessageComposer(this.getPlayerId(), Locale.getOrDefault("mention.notfriend", "You must be friends to mention a player!")
+                                .replace("%s", finalName), 34));
+                    } else {
+                        this.getPlayer().getSession().send(new WhisperMessageComposer(this.getPlayerId(), Locale.getOrDefault("mention.disabled", "This player is not accepting mentions!")
+                                .replace("%s", finalName), 34));
+
+                    }
+                }
+            } else {
+                this.getPlayer().getSession().send(new WhisperMessageComposer(this.getPlayerId(), Locale.getOrDefault("mention.notexist", "The user %s does not exist or it's disconnected")
+                        .replace("%s", finalName), 34));
+            }
         }
 
         this.unIdle();

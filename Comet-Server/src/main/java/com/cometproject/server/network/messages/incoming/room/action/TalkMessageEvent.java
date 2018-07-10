@@ -90,31 +90,6 @@ public class TalkMessageEvent implements Event {
         }
 
         if (playerEntity.onChat(filteredMessage)) {
-            if(message.startsWith("@")) {
-                String finalName;
-                String[] splittedName = message.replace("@", "").split(" ");
-                finalName = splittedName[0];
-
-                Session player = NetworkManager.getInstance().getSessions().getByPlayerUsername(finalName);
-
-                if(player != null) {
-                    Map<String, String> notificationParams = Maps.newHashMap();
-
-                    notificationParams.put("message", Locale.getOrDefault("mention.message", "The user %s has mentioned you in a room (%b), click here to go to the room.")
-                            .replace("%s", client.getPlayer().getData().getUsername())
-                            .replace("%b", message));
-                    notificationParams.put("image", "${image.library.url}notifications/twitter.png");
-                    notificationParams.put("linkUrl", "event:navigator/goto/" + client.getPlayer().getEntity().getRoom().getData().getId());
-
-                    player.send(new NotificationMessageComposer("furni_placement_error", notificationParams));
-                    client.send(new WhisperMessageComposer(client.getPlayer().getData().getId(), Locale.getOrDefault("mention.success", "You've mention %s successfully")
-                            .replace("%s", finalName), 34));
-                } else {
-                    client.send(new WhisperMessageComposer(client.getPlayer().getData().getId(), Locale.getOrDefault("mention.notexist", "The user %s does not exist or it's disconnected")
-                            .replace("%s", finalName), 34));
-                }
-            }
-
             try {
                 if (LogManager.ENABLED && !message.replace(" ", "").isEmpty())
                     LogManager.getInstance().getStore().getLogEntryContainer().put(new RoomChatLogEntry(playerEntity.getRoom().getId(), client.getPlayer().getId(), message));

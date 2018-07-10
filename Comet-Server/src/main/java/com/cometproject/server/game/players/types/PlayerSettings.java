@@ -4,6 +4,7 @@ import com.cometproject.api.game.players.data.IPlayerSettings;
 import com.cometproject.api.game.players.data.types.IPlaylistItem;
 import com.cometproject.api.game.players.data.types.IVolumeData;
 import com.cometproject.api.game.players.data.types.IWardrobeItem;
+import com.cometproject.api.game.players.data.types.MentionType;
 import com.cometproject.api.utilities.JsonUtil;
 import com.cometproject.server.game.players.components.types.settings.PlaylistItem;
 import com.cometproject.server.game.players.components.types.settings.VolumeData;
@@ -43,6 +44,7 @@ public class PlayerSettings implements IPlayerSettings {
     private boolean ignoreEvents;
 
     private boolean sendLoginNotification;
+    private MentionType mentionType;
 
     public PlayerSettings(ResultSet data, boolean isLogin) throws SQLException {
         if (isLogin) {
@@ -94,6 +96,7 @@ public class PlayerSettings implements IPlayerSettings {
             this.ignoreEvents = data.getString("playerSettings_ignoreEvents").equalsIgnoreCase("1");
             this.disableWhisper = data.getString("playerSettings_disableWhisper").equalsIgnoreCase("1");
             this.sendLoginNotification = data.getString("playerSettings_sendLoginNotif").equalsIgnoreCase("1");
+            this.mentionType = MentionType.valueOf(data.getString("playerSettings_mentionType"));
         } else {
             String volumeData = data.getString("volume");
 
@@ -143,6 +146,7 @@ public class PlayerSettings implements IPlayerSettings {
             this.ignoreEvents = data.getString("ignore_events").equals("1");
             this.disableWhisper = data.getString("disable_whisper").equals("1");
             this.sendLoginNotification = data.getString("send_login_notif").equals("1");
+            this.mentionType = MentionType.valueOf(data.getString("mention_type"));
         }
     }
 
@@ -165,6 +169,7 @@ public class PlayerSettings implements IPlayerSettings {
         this.navigatorHeight = 592;
         this.navigatorShowSearches = false;
         this.disableWhisper = false;
+        this.mentionType = MentionType.ALL;
     }
 
     public IVolumeData getVolumes() {
@@ -297,5 +302,13 @@ public class PlayerSettings implements IPlayerSettings {
 
     public void setSendLoginNotification(boolean sendLoginNotification) {
         this.sendLoginNotification = sendLoginNotification;
+    }
+
+    public MentionType getMentionType() {
+        return mentionType;
+    }
+
+    public void setMentionType(MentionType mentionType) {
+        this.mentionType = mentionType;
     }
 }

@@ -52,8 +52,9 @@ public class WhisperMessageEvent implements Event {
         if (!userTo.getPlayer().getEntity().isVisible())
             return;
 
-        if(userTo.getPlayer().getSettings().disableWhisper()) {
-
+        if (userTo.getPlayer().getSettings().disableWhisper()) {
+            client.send(new WhisperMessageComposer(client.getPlayer().getId(),
+                    Locale.getOrDefault("whisper.disabled", "This player is not accepting whispers!"), 34));
             return;
         }
 
