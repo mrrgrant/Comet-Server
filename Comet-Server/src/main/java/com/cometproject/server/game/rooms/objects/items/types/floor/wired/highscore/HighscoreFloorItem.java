@@ -47,7 +47,7 @@ public abstract class HighscoreFloorItem extends RoomItemFloor {
         final Calendar currentCalendar = Calendar.getInstance();
         currentCalendar.setTime(currentDate);
 
-        final Date date = new Date(this.itemData.getLastClear());
+        final Date date = new Date(this.itemData.getLastClear()* 1000L);
         final Calendar clearedCalendar = Calendar.getInstance();
         clearedCalendar.setTime(date);
 
