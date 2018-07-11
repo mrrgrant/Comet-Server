@@ -34,6 +34,9 @@ import com.cometproject.server.game.rooms.objects.items.types.floor.wired.condit
 import com.cometproject.server.game.rooms.objects.items.types.floor.wired.conditions.positive.*;
 import com.cometproject.server.game.rooms.objects.items.types.floor.wired.conditions.positive.custom.*;
 import com.cometproject.server.game.rooms.objects.items.types.floor.wired.highscore.HighscoreClassicFloorItem;
+import com.cometproject.server.game.rooms.objects.items.types.floor.wired.highscore.HighscoreFloorItem;
+import com.cometproject.server.game.rooms.objects.items.types.floor.wired.highscore.HighscoreMostWinsFloorItem;
+import com.cometproject.server.game.rooms.objects.items.types.floor.wired.highscore.HighscorePerTeamFloorItem;
 import com.cometproject.server.game.rooms.objects.items.types.floor.wired.triggers.*;
 import com.cometproject.server.game.rooms.objects.items.types.wall.MoodlightWallItem;
 import com.cometproject.server.game.rooms.objects.items.types.wall.PostItWallItem;
@@ -175,6 +178,8 @@ public class RoomItemFactory {
             put("wf_cnd_habbo_not_rank", WiredNegativeConditionCustomHasRank.class); // condition
 
             put("highscore_classic", HighscoreClassicFloorItem.class);
+            put("highscore_perteam", HighscorePerTeamFloorItem.class);
+            put("highscore_mostwins", HighscoreMostWinsFloorItem.class);
 
             put("pressureplate_seat", PressurePlateSeatFloorItem.class);
 
@@ -309,7 +314,7 @@ public class RoomItemFactory {
             return null;
         }
 
-        RoomItemWall wallItem = null;   
+        RoomItemWall wallItem = null;
 
         switch (def.getInteraction()) {
             case "habbowheel": {

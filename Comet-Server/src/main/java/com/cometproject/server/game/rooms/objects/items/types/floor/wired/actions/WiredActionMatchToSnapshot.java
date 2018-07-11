@@ -8,7 +8,7 @@ import com.cometproject.server.game.rooms.objects.items.types.floor.games.banzai
 import com.cometproject.server.game.rooms.objects.items.types.floor.wired.WiredItemSnapshot;
 import com.cometproject.server.game.rooms.objects.items.types.floor.wired.base.WiredActionItem;
 import com.cometproject.server.game.rooms.objects.items.types.floor.wired.events.WiredItemEvent;
-import com.cometproject.server.game.rooms.objects.items.types.floor.wired.highscore.HighscoreClassicFloorItem;
+import com.cometproject.server.game.rooms.objects.items.types.floor.wired.highscore.HighscoreFloorItem;
 import com.cometproject.server.game.rooms.types.Room;
 import com.cometproject.server.network.messages.outgoing.room.items.SlideObjectBundleMessageComposer;
 import com.cometproject.server.network.messages.outgoing.room.items.UpdateFloorItemMessageComposer;
@@ -52,7 +52,7 @@ public class WiredActionMatchToSnapshot extends WiredActionItem {
             WiredItemSnapshot itemSnapshot = this.getWiredData().getSnapshots().get(itemId);
             if (itemSnapshot == null) continue;
 
-            if (matchState && !(floorItem instanceof DiceFloorItem || floorItem instanceof HighscoreClassicFloorItem)) {
+            if (matchState && !(floorItem instanceof DiceFloorItem || floorItem instanceof HighscoreFloorItem)) {
                 floorItem.getItemData().setData(itemSnapshot.getExtraData());
             }
 

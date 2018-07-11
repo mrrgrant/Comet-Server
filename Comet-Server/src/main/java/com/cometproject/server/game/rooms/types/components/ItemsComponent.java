@@ -22,6 +22,7 @@ import com.cometproject.server.game.rooms.objects.items.types.floor.GiftFloorIte
 import com.cometproject.server.game.rooms.objects.items.types.floor.MagicStackFloorItem;
 import com.cometproject.server.game.rooms.objects.items.types.floor.SoundMachineFloorItem;
 import com.cometproject.server.game.rooms.objects.items.types.floor.wired.WiredFloorItem;
+import com.cometproject.server.game.rooms.objects.items.types.floor.wired.highscore.HighscoreFloorItem;
 import com.cometproject.server.game.rooms.objects.items.types.wall.MoodlightWallItem;
 import com.cometproject.server.game.rooms.types.Room;
 import com.cometproject.server.game.rooms.types.mapping.RoomTile;
@@ -63,6 +64,8 @@ public class ItemsComponent {
     public ItemsComponent(Room room) {
         this.room = room;
         this.log = Logger.getLogger("Room Items Component [" + room.getData().getName() + "]");
+
+        this.itemClassIndex.put(HighscoreFloorItem.class, Sets.newConcurrentHashSet());
 
         if (room.getCachedData() != null) {
             for (FloorItemDataObject floorItemDataObject : room.getCachedData().getFloorItems()) {
@@ -315,9 +318,9 @@ public class ItemsComponent {
 
                 if (floorItem == null || floorItem.getDefinition() == null) continue;
 
-                if (!floorItem.getClass().equals(clazz)) {
-                    continue;
-                }
+//                if (!floorItem.getClass().equals(clazz)) {
+//                    continue;
+//                }
 
                 T item = ((T) floorItem);
                 items.add(item);
@@ -724,6 +727,10 @@ public class ItemsComponent {
 
         if (!this.itemClassIndex.containsKey(floorItem.getClass())) {
             itemClassIndex.put(floorItem.getClass(), new HashSet<>());
+        }
+
+        if (floorItem instanceof HighscoreFloorItem) {
+            itemClassIndex.get(HighscoreFloorItem.class).add(floorItem.getId());
         }
 
         if (!this.itemInteractionIndex.containsKey(floorItem.getDefinition().getInteraction())) {
