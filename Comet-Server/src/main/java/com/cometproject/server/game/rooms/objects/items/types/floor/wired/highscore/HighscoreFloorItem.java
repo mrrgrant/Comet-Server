@@ -47,7 +47,7 @@ public abstract class HighscoreFloorItem extends RoomItemFloor {
         final Calendar currentCalendar = Calendar.getInstance();
         currentCalendar.setTime(currentDate);
 
-        final Date date = new Date(this.itemData.getLastClear()* 1000L);
+        final Date date = new Date(this.itemData.getLastClear() * 1000L);
         final Calendar clearedCalendar = Calendar.getInstance();
         clearedCalendar.setTime(date);
 
@@ -61,6 +61,12 @@ public abstract class HighscoreFloorItem extends RoomItemFloor {
 
             case WEEKLY:
                 if (currentCalendar.get(Calendar.WEEK_OF_YEAR) != currentCalendar.get(Calendar.WEEK_OF_YEAR)) {
+                    this.getScoreData().getEntries().clear();
+                    cleared = true;
+                }
+                break;
+            case MONTHLY:
+                if (currentCalendar.get(Calendar.MONTH) != currentCalendar.get(Calendar.MONTH)) {
                     this.getScoreData().getEntries().clear();
                     cleared = true;
                 }
