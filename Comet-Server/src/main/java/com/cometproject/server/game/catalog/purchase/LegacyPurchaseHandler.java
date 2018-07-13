@@ -110,13 +110,9 @@ public class LegacyPurchaseHandler implements ICatalogPurchaseHandler {
 
         final int playerIdToDeliver = giftData == null ? -1 : PlayerDao.getIdByUsername(giftData.getReceiver());
 
-        if (giftData != null) {
-            if (playerIdToDeliver == 0) {
-                client.send(new GiftUserNotFoundMessageComposer());
-                return;
-            } else {
-                client.getPlayer().getAchievements().progressAchievement(AchievementType.GIFT_GIVER, 1);
-            }
+        if (giftData != null && playerIdToDeliver == 0) {
+            client.send(new GiftUserNotFoundMessageComposer());
+            return;
         }
 
         Set<PlayerItem> unseenItems = Sets.newHashSet();
@@ -169,6 +165,7 @@ public class LegacyPurchaseHandler implements ICatalogPurchaseHandler {
                 }
 
                 client.getPlayer().setLastGift((int) Comet.getTime());
+                client.getPlayer().getAchievements().progressAchievement(AchievementType.GIFT_GIVER, 1);
             }
 
             if (item.isBadgeOnly()) {
@@ -249,7 +246,7 @@ public class LegacyPurchaseHandler implements ICatalogPurchaseHandler {
             }
 
             if (item.isBadgeOnly()) {
-                if(item.getPresetData().equals("name_colour")) {
+                if (item.getPresetData().equals("name_colour")) {
                     client.getPlayer().getData().setNameColour(item.getBadgeId());
                 } else {
                     if (item.hasBadge() && !client.getPlayer().getInventory().hasBadge(item.getBadgeId())) {

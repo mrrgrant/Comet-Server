@@ -115,6 +115,19 @@ public abstract class RoomObject implements IRoomObject, Positionable {
         return null;
     }
 
+    public boolean isCollided(RoomObject object) {
+        boolean tilesTouching = this.getPosition().touching(object.getPosition());
+
+        if (!tilesTouching) {
+            return false;
+        }
+
+        final boolean xMatches = object.getPosition().getX() == object.getPosition().getX();
+        final boolean yMatches = object.getPosition().getY() == object.getPosition().getY();
+
+        return xMatches || yMatches;
+    }
+
     /**
      * Gets the closest bot entity
      *

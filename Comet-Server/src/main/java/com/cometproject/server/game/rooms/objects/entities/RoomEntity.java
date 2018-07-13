@@ -56,6 +56,8 @@ public abstract class RoomEntity extends RoomFloorObject implements AvatarEntity
     private boolean canWalk = true;
     private boolean isIdle = false;
 
+    private boolean isRolling = false;
+
     private final Set<RoomTile> tiles = Sets.newConcurrentHashSet();
 
     private boolean isRoomMuted = false;
@@ -63,19 +65,19 @@ public abstract class RoomEntity extends RoomFloorObject implements AvatarEntity
     private long joinTime;
 
     private RoomEntity mountedEntity;
-    private Set<RoomEntity> followingEntities = new ConcurrentHashSet<>();
 
+    private Set<RoomEntity> followingEntities = new ConcurrentHashSet<>();
     private long privateChatItemId = 0;
 
     private Map<RoomEntityStatus, String> statuses = new ConcurrentHashMap<>();
-    private Position pendingWalk;
 
+    private Position pendingWalk;
     private boolean fastWalkEnabled = false;
+
     private boolean isWarped;
     private RoomTile warpedTile;
     private boolean sendUpdateMessage = true;
     private boolean hasMount = false;
-
     private boolean warping;
 
     public RoomEntity(int identifier, Position startPosition, int startBodyRotation, int startHeadRotation, Room roomInstance) {
@@ -643,13 +645,11 @@ public abstract class RoomEntity extends RoomFloorObject implements AvatarEntity
         final RoomTile tile = this.getRoom().getMapping().getTile(this.getPosition());
         this.warpedTile = tile;
 
-        System.out.println("entities on current tile: " + tile.getEntities().size());
-
-        final Position position = roomObject.getPosition();
+        final Position position = roomObject.getPosition().copy();
         position.setZ(roomObject.getTile().getWalkHeight());
 
         this.cancelWalk();
-        this.warp(roomObject.getPosition());
+        this.warp(position);
     }
 
     public void warp(Position position, boolean cancelNextUpdate) {
@@ -844,22 +844,6 @@ public abstract class RoomEntity extends RoomFloorObject implements AvatarEntity
         return sendUpdateMessage;
     }
 
-    public boolean isWarping() {
-        return warping;
-    }
-
-    public void setWarping(boolean warping) {
-        this.warping = warping;
-    }
-
-    public RoomTile getWarpedTile() {
-        return warpedTile;
-    }
-
-    public void setWarpedTile(RoomTile warpedTile) {
-        this.warpedTile = warpedTile;
-    }
-
     public void removeFromTile(RoomTile tile) {
         tile.getEntities().remove(this);
         this.tiles.remove(tile);
@@ -880,5 +864,13 @@ public abstract class RoomEntity extends RoomFloorObject implements AvatarEntity
 
     public Set<RoomTile> getTiles() {
         return tiles;
+    }
+
+    public boolean isRolling() {
+        return isRolling;
+    }
+
+    public void setRolling(boolean rolling) {
+        isRolling = rolling;
     }
 }

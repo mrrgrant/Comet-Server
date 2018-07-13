@@ -87,7 +87,7 @@ delay: 169ms
 
         this.setRotation(entity.getBodyRotation());
 
-        if (isOnBall && !this.wasDribbling) {
+        if (isOnBall && !this.wasDribbling && this.getRoom().getGame().shootEnabled()) {
             if (entity instanceof PlayerEntity) {
                 this.kickerEntity = entity;
             }
@@ -164,7 +164,7 @@ delay: 169ms
                 position = this.getNextPosition(position.getFlag(), position.squareBehind(position.getFlag()));
             }
 
-            int count = isStart ? 2 : 2;
+            int count = isStart ? 2 : 1;
 
             // can we skip some tiles?
             for (int i = 0; i < count && (this.rollStage + i < KICK_POWER); i++) {
@@ -330,6 +330,7 @@ delay: 169ms
         this.isRolling = true;
 
         Position newPosition;
+        entity.moveTo(this.getPosition());
 
         if (this.isValidRoll(this.getNextPosition())) {
             newPosition = calculatePosition(this.getPosition().getX(), this.getPosition().getY(), entity.getBodyRotation());

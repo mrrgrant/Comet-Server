@@ -9,6 +9,9 @@ import com.cometproject.server.game.rooms.objects.items.events.types.RollerFloor
 import com.cometproject.server.game.rooms.objects.items.types.AdvancedFloorItem;
 import com.cometproject.server.game.rooms.objects.items.types.floor.wired.triggers.WiredTriggerWalksOffFurni;
 import com.cometproject.server.game.rooms.types.Room;
+import com.cometproject.server.game.rooms.types.mapping.RoomTile;
+import com.cometproject.server.game.rooms.types.mapping.RoomTileStatusType;
+import com.cometproject.server.network.messages.outgoing.room.avatar.AvatarUpdateMessageComposer;
 import com.cometproject.server.network.messages.outgoing.room.items.SlideObjectBundleMessageComposer;
 import com.cometproject.server.utilities.collections.ConcurrentHashSet;
 import com.cometproject.storage.api.StorageContext;
@@ -50,7 +53,7 @@ public class RollerFloorItem extends AdvancedFloorItem<RollerFloorItemEvent> {
 
     @Override
     public void onEntityStepOn(RoomEntity entity) {
-        if (this.event.getCurrentTicks() == 3) {
+        if (this.event.getCurrentTicks() == 3   ) {
             skippedEntities.add(entity.getId());
         }
     }
@@ -93,6 +96,7 @@ public class RollerFloorItem extends AdvancedFloorItem<RollerFloorItemEvent> {
             return;
         }
 
+        final RoomTile tile = this.getRoom().getMapping().getTile(sqInfront);
         boolean retry = false;
 
         List<RoomEntity> entities = this.getRoom().getEntities().getEntitiesAt(this.getPosition());
@@ -132,6 +136,10 @@ public class RollerFloorItem extends AdvancedFloorItem<RollerFloorItemEvent> {
 
             entity.updateAndSetPosition(new Position(sqInfront.getX(), sqInfront.getY(), toHeight));
             entity.markNeedsUpdate(false);
+
+            if (tile.getStatus() == RoomTileStatusType.SIT) {
+                entity.setRolling(true);
+            }
 
             this.onEntityStepOff(entity);
             movedEntities.add(entity);

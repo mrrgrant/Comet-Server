@@ -89,24 +89,6 @@ public class BanzaiGame extends RoomGame {
             }
         }
 
-        final List<HighscoreFloorItem> scoreboards = this.room.getItems().getByClass(HighscoreFloorItem.class);
-
-        if (scoreboards.size() != 0) {
-            List<Integer> winningPlayers = this.room.getGame().getTeams().get(this.winningTeam());
-            List<String> winningPlayerUsernames = Lists.newArrayList();
-            final int score = this.getScore(winningTeam);
-
-            for (int playerId : winningPlayers) {
-                winningPlayerUsernames.add(this.room.getEntities().getEntityByPlayerId(playerId).getUsername());
-            }
-
-            if (winningPlayerUsernames.size() != 0) {
-                for (HighscoreFloorItem scoreboard : scoreboards) {
-                    scoreboard.onTeamWins(winningPlayerUsernames, score);
-                }
-            }
-        }
-
         for (RoomEntity entity : this.room.getEntities().getAllEntities().values()) {
             if (entity.getEntityType().equals(RoomEntityType.PLAYER)) {
                 PlayerEntity playerEntity = (PlayerEntity) entity;
@@ -144,22 +126,6 @@ public class BanzaiGame extends RoomGame {
     public void removeTile() {
         this.banzaiTileCount -= 1;
         this.startBanzaiTileCount -= 1;
-    }
-
-    public int getScore(GameTeam team) {
-        return this.getGameComponent().getScore(team);
-    }
-
-    public GameTeam winningTeam() {
-        Map.Entry<GameTeam, Integer> winningTeam = null;
-
-        for (Map.Entry<GameTeam, Integer> score : this.getGameComponent().getScores().entrySet()) {
-            if (winningTeam == null || winningTeam.getValue() < score.getValue()) {
-                winningTeam = score;
-            }
-        }
-
-        return winningTeam != null ? winningTeam.getKey() : GameTeam.NONE;
     }
 
     public void decreaseTileCount() {
