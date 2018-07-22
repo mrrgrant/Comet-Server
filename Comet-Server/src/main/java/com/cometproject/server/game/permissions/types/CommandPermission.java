@@ -5,16 +5,22 @@ import java.sql.SQLException;
 
 
 public class CommandPermission {
+    public enum RoomRights {
+        OWNER,
+        RIGHTS,
+        NONE;
+    }
+
     private final String commandId;
+
     private final int minimumRank;
     private final boolean vipOnly;
-    private final boolean rightsOnly;
-
-    public CommandPermission(String commandId, int minimumRank, boolean vipOnly, boolean rightsOnly) {
+    private final RoomRights rights;
+    public CommandPermission(String commandId, int minimumRank, boolean vipOnly, RoomRights rights) {
         this.commandId = commandId;
         this.minimumRank = minimumRank;
         this.vipOnly = vipOnly;
-        this.rightsOnly = rightsOnly;
+        this.rights = rights;
     }
 
     public String getCommandId() {
@@ -29,7 +35,7 @@ public class CommandPermission {
         return vipOnly;
     }
 
-    public boolean rightsOnly() {
-        return rightsOnly;
+    public RoomRights getRightsOverride() {
+        return rights;
     }
 }

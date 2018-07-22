@@ -47,8 +47,10 @@ public class SeatFloorItem extends RoomItemFloor {
     public void onEntityStepOn(RoomEntity entity, boolean instantUpdate) {
         entity.sit(getSitHeight(), getRotation());
 
-        if (instantUpdate || entity.isRolling())
+        if (instantUpdate || entity.isRolling()) {
+            entity.setRolling(false);
             this.getRoom().getEntities().broadcastMessage(new AvatarUpdateMessageComposer(entity));
+        }
     }
 
     @Override

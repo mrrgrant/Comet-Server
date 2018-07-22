@@ -41,19 +41,27 @@ public class PermissionComponent implements PlayerPermissions {
             if (permission.getMinimumRank() <= this.getPlayer().getData().getRank()) {
                 boolean hasCommand = !permission.vipOnly() || player.getData().isVip();
 
-                if (!permission.rightsOnly()) {
+                if (permission.getRightsOverride() == CommandPermission.RoomRights.NONE) {
                     return hasCommand;
                 }
 
                 if (hasCommand) {
-                    if (player.getEntity().getRoom().getRights().hasRights(this.getPlayer().getId())) {
+                    if (this.getPlayer().getPermissions().getRank().roomFullControl() ||
+                            this.getPlayer().getId() == this.getPlayer().getEntity().getRoom().getId()) {
+                        return true;
+                    } else if (permission.getRightsOverride() == CommandPermission.RoomRights.RIGHTS &&
+                            player.getEntity().getRoom().getRights().hasRights(this.getPlayer().getId())) {
                         return true;
                     }
                 }
+
+                return false;
             }
+
+            return (key.equals("debug") && Comet.isDebugging) || key.equals("dev");
         }
-        
-        return key.equals("debug") && Comet.isDebugging || key.equals("dev");
+
+        return false;
     }
 
     @Override

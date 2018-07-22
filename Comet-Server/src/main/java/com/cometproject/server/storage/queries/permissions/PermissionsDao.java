@@ -110,7 +110,7 @@ public class PermissionsDao {
 
         try {
             sqlConnection = SqlHelper.getConnection();
-            preparedStatement = SqlHelper.prepare("SELECT `command_id`, `minimum_rank`, `vip_only`, `rights_only` FROM permission_commands", sqlConnection);
+            preparedStatement = SqlHelper.prepare("SELECT `command_id`, `minimum_rank`, `vip_only`, `rights_override` FROM permission_commands", sqlConnection);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -118,10 +118,10 @@ public class PermissionsDao {
                     final String commandId = resultSet.getString("command_id");
                     final int minimumRank = resultSet.getInt("minimum_rank");
                     final boolean vipOnly = resultSet.getString("vip_only").equals("1");
-                    final boolean rightsOnly = resultSet.getString("rights_only").equals("1");
+                    final CommandPermission.RoomRights roomRights = CommandPermission.RoomRights.valueOf(resultSet.getString("rights_override"));
 
                     data.putIfAbsent(resultSet.getString("command_id"),
-                            new CommandPermission(commandId, minimumRank, vipOnly, rightsOnly));
+                            new CommandPermission(commandId, minimumRank, vipOnly, roomRights));
                 } catch (Exception ignored) {
 
                 }
